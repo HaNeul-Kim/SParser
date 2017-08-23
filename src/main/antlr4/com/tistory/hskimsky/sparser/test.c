@@ -1,0 +1,13 @@
+char c;
+int x = 5;
+ 
+void bar(int x);
+ 
+int foo(int y, char d) {
+  int i;
+  for (i=0; i<3; i=i+1) {
+    x=3;
+    y=5;
+  }
+}
+
