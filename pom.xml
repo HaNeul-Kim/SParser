@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.tistory.hskimsky.sparser</groupId>
+    <artifactId>sparser</artifactId>
+    <version>0.1-SNAPSHOT</version>
+
+    <packaging>jar</packaging>
+    <name>Sky Parser with ANTLR(ANother Tool for Language Recognition)</name>
+    <url>http://hskimsky.tistory.com</url>
+    <inceptionYear>2017</inceptionYear>
+
+    <properties>
+        <!-- Project -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Plugin -->
+        <compiler.plugin.version>3.6.1</compiler.plugin.version>
+
+        <!-- Antlr -->
+        <antlr4.version>4.7</antlr4.version>
+        <!-- Test -->
+        <junit.version>4.12</junit.version>
+        <!-- Guava -->
+        <guava.version>21.0</guava.version>
+    </properties>
+
+    <dependencies>
+        <!-- Antlr4 -->
+        <dependency>
+            <groupId>org.antlr</groupId>
+            <artifactId>antlr4</artifactId>
+            <version>${antlr4.version}</version>
+        </dependency>
+
+        <!-- ========== -->
+        <!--  Test API  -->
+        <!-- ========== -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- ============== -->
+        <!--  Google Guava  -->
+        <!-- ============== -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+
+        <!-- ================ -->
+        <!--  Apache Commons  -->
+        <!-- ================ -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.5</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${compiler.plugin.version}</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+            <!-- http://homo-ware.tistory.com/158 -->
+            <plugin>
+                <groupId>org.antlr</groupId>
+                <artifactId>antlr4-maven-plugin</artifactId>
+                <version>${antlr4.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>antlr</goal>
+                        </goals>
+                        <configuration>
+                            <conversionTimeout>10000</conversionTimeout>
+                            <debug>false</debug>
+                            <dfa>false</dfa>
+                            <nfa>false</nfa>
+                            <libDirectory>src/main/antlr4/imports</libDirectory>
+                            <messageFormat>antlr</messageFormat>
+                            <outputDirectory>src/main/gen</outputDirectory>
+                            <printGrammar>false</printGrammar>
+                            <profile>false</profile>
+                            <report>false</report>
+                            <sourceDirectory>src/main/antlr4</sourceDirectory>
+                            <trace>false</trace>
+                            <verbose>true</verbose>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <!-- http://homo-ware.tistory.com/158 -->
+        <!--<resources>
+            <resource>
+                <directory>src/main/java</directory>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>src/main/gen</directory>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>src/test/java</directory>
+            </testResource>
+            <testResource>
+                <directory>src/test/resources</directory>
+            </testResource>
+        </testResources>-->
+    </build>
+
+    <developers>
+        <developer>
+            <id>haneul.kim</id>
+            <email>hskimsky@gmail.com</email>
+            <name>Haneul, Kim</name>
+            <roles>
+                <role>manager</role>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
+</project>
